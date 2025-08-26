@@ -24,12 +24,12 @@ Modern ve güvenli not alma deneyimi sunan Flutter tabanlı mobil uygulama. Notl
 
 ## 📸 Uygulama Ekran Görüntüleri
 
-<div align="center">
-  <img src="1.jpg" width="120" height="250" alt="Ana Ekran" />
-  <img src="2.jpg" width="120" height="250" alt="Not Oluşturma" />
-  <img src="3.png" width="120" height="250" alt="Not Düzenleme" />
-  <img src="4.jpg" width="120" height="250" alt="Ayarlar" />
-  <img src="5.jpg" width="120" height="250" alt="Giriş Ekranı" />
+<div align="left">
+  <img src="1.jpg" width="150" height="250" alt="Ana Ekran" />
+  <img src="2.jpg" width="150" height="250" alt="Not Oluşturma" />
+  <img src="3.png" width="150" height="250" alt="Not Düzenleme" />
+  <img src="4.jpg" width="150" height="250" alt="Ayarlar" />
+  <img src="5.jpg" width="150" height="250" alt="Giriş Ekranı" />
 </div>
 
 ## 🚀 Hızlı Başlangıç
