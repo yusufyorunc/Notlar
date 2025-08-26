@@ -22,6 +22,16 @@ Modern ve güvenli not alma deneyimi sunan Flutter tabanlı mobil uygulama. Notl
 
 > **Sistem Gereksinimleri**: Android 7.0 (API 24) ve üzeri
 
+## 📸 Uygulama Ekran Görüntüleri
+
+<div align="center">
+  <img src="1.jpg" width="175" height="350" alt="Ana Ekran" />
+  <img src="2.jpg" width="175" height="350" alt="Not Oluşturma" />
+  <img src="3.png" width="175" height="350" alt="Not Düzenleme" />
+  <img src="4.jpg" width="175" height="350" alt="Ayarlar" />
+  <img src="5.jpg" width="175" height="350" alt="Giriş Ekranı" />
+</div>
+
 ## 🚀 Hızlı Başlangıç
 
 1. **Hesap Oluşturun**: E-posta ve güvenli bir şifre ile kayıt olun
