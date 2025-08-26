@@ -2,7 +2,7 @@
 
 [![GitHub Release](https://img.shields.io/github/v/release/yusufyorunc/Notlar?style=for-the-badge&logo=github&color=blue)](https://github.com/yusufyorunc/Notlar/releases/tag/Notlar)
 [![Downloads](https://img.shields.io/github/downloads/yusufyorunc/Notlar/total?style=for-the-badge&logo=android&color=green)](https://github.com/yusufyorunc/Notlar/releases/tag/Notlar)
-[![Flutter](https://img.shields.io/badge/Flutter-3.8.1+-02569B?style=for-the-badge&logo=flutter)](https://flutter.dev)
+[![Flutter](https://img.shields.io/badge/Flutter-3.35.1+-02569B?style=for-the-badge&logo=flutter)](https://flutter.dev)
 [![Firebase](https://img.shields.io/badge/Firebase-Enabled-FFCA28?style=for-the-badge&logo=firebase)](https://firebase.google.com)
 
 Modern ve güvenli not alma deneyimi sunan Flutter tabanlı mobil uygulama. Notlarınızı AES-256 şifreleme ile koruyun ve Firebase ile güvenle senkronize edin.
@@ -25,11 +25,11 @@ Modern ve güvenli not alma deneyimi sunan Flutter tabanlı mobil uygulama. Notl
 ## 📸 Uygulama Ekran Görüntüleri
 
 <div align="center">
-  <img src="1.jpg" width="175" height="350" alt="Ana Ekran" />
-  <img src="2.jpg" width="175" height="350" alt="Not Oluşturma" />
-  <img src="3.png" width="175" height="350" alt="Not Düzenleme" />
-  <img src="4.jpg" width="175" height="350" alt="Ayarlar" />
-  <img src="5.jpg" width="175" height="350" alt="Giriş Ekranı" />
+  <img src="1.jpg" width="120" height="250" alt="Ana Ekran" />
+  <img src="2.jpg" width="120" height="250" alt="Not Oluşturma" />
+  <img src="3.png" width="120" height="250" alt="Not Düzenleme" />
+  <img src="4.jpg" width="120" height="250" alt="Ayarlar" />
+  <img src="5.jpg" width="120" height="250" alt="Giriş Ekranı" />
 </div>
 
 ## 🚀 Hızlı Başlangıç
