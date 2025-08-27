@@ -18,7 +18,7 @@ Modern ve güvenli not alma deneyimi sunan Flutter tabanlı mobil uygulama. Notl
 
 ## 📱 İndirme
 
-**[📥 En Son Sürümü İndir](https://github.com/yusufyorunc/Notlar/releases/tag/Notlar)**
+**[📥 En Son Sürümü İndir](https://github.com/yusufyorunc/Notlar/releases/tag/2.9.8-(20250827))**
 
 > **Sistem Gereksinimleri**: Android 7.0 (API 24) ve üzeri
 
