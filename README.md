@@ -1,7 +1,7 @@
 # 📝 Notlar - Güvenli Not Alma Uygulaması
 
 [![GitHub Release](https://img.shields.io/github/v/release/yusufyorunc/Notlar?style=for-the-badge&logo=github&color=blue)](https://github.com/yusufyorunc/Notlar/releases/tag/Notlar)
-[![Downloads](https://img.shields.io/github/downloads/yusufyorunc/Notlar/total?style=for-the-badge&logo=android&color=green)](https://github.com/yusufyorunc/Notlar/releases/tag/Notlar)
+[![Downloads](https://img.shields.io/github/downloads/yusufyorunc/Notlar/total?style=for-the-badge&logo=android&color=green)](https://github.com/yusufyorunc/Notlar/releases/tag/2.9.8-(20250827))
 [![Flutter](https://img.shields.io/badge/Flutter-3.35.1+-02569B?style=for-the-badge&logo=flutter)](https://flutter.dev)
 [![Firebase](https://img.shields.io/badge/Firebase-Enabled-FFCA28?style=for-the-badge&logo=firebase)](https://firebase.google.com)
 
