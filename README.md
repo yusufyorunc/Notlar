@@ -1,7 +1,7 @@
 # 📝 Notlar - Güvenli Not Alma Uygulaması
 
 [![GitHub Release](https://img.shields.io/github/v/release/yusufyorunc/Notlar?style=for-the-badge&logo=github&color=blue)](https://github.com/yusufyorunc/Notlar/releases/tag/Notlar)
-[![Downloads](https://img.shields.io/github/downloads/yusufyorunc/Notlar/total?style=for-the-badge&logo=android&color=green)](https://github.com/yusufyorunc/Notlar/releases/tag/2.9.9-(20250828))
+[![Downloads](https://img.shields.io/github/downloads/yusufyorunc/Notlar/total?style=for-the-badge&logo=android&color=green)](https://github.com/yusufyorunc/Notlar/releases/tag/3.0.0-(20250901))
 [![Flutter](https://img.shields.io/badge/Flutter-3.35.1+-02569B?style=for-the-badge&logo=flutter)](https://flutter.dev)
 [![Firebase](https://img.shields.io/badge/Firebase-Enabled-FFCA28?style=for-the-badge&logo=firebase)](https://firebase.google.com)
 
@@ -18,7 +18,7 @@ Modern ve güvenli not alma deneyimi sunan Flutter tabanlı mobil uygulama. Notl
 
 ## 📱 İndirme
 
-**[📥 En Son Sürümü İndir](https://github.com/yusufyorunc/Notlar/releases/tag/2.9.9-(20250828))**
+**[📥 En Son Sürümü İndir](https://github.com/yusufyorunc/Notlar/releases/tag/3.0.0-(20250901))**
 
 > **Sistem Gereksinimleri**: Android 7.0 (API 24) ve üzeri
 
@@ -28,8 +28,7 @@ Modern ve güvenli not alma deneyimi sunan Flutter tabanlı mobil uygulama. Notl
   <img src="1.jpg" width="150" height="300" alt="Ana Ekran" />
   <img src="2.jpg" width="150" height="300" alt="Not Oluşturma" />
   <img src="3.png" width="150" height="300" alt="Not Düzenleme" />
-  <img src="4.jpg" width="150" height="300" alt="Ayarlar" />
-  <img src="5.jpg" width="150" height="300" alt="Giriş Ekranı" />
+  <img src="4.jpg" width="150" height="300" alt="Ana Ekran 2" />
 </div>
 
 ## 🚀 Hızlı Başlangıç
