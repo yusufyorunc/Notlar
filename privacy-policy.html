@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gizlilik Politikası - Notlar Uygulaması</title>
+    <style>
+        :root {
+            --primary: #6750A4;
+            --surface: #FEF7FF;
+            --on-surface: #1D1B20;
+            --on-surface-variant: #49454F;
+            --outline: #79747E;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #D0BCFF;
+                --surface: #141218;
+                --on-surface: #E6E0E9;
+                --on-surface-variant: #CAC4D0;
+                --outline: #938F99;
+            }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--surface);
+            color: var(--on-surface);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(103, 80, 164, 0.1), rgba(208, 188, 255, 0.1));
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(121, 116, 126, 0.2);
+        }
+        
+        .icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(103, 80, 164, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 32px;
+        }
+        
+        h1 {
+            color: var(--on-surface);
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        header p {
+            color: var(--on-surface-variant);
+            font-size: 0.95rem;
+        }
+        
+        section {
+            background: rgba(121, 116, 126, 0.05);
+            border: 1px solid rgba(121, 116, 126, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        
+        section h2 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--on-surface);
+            margin-bottom: 12px;
+        }
+        
+        section h2 span {
+            background: rgba(103, 80, 164, 0.1);
+            padding: 8px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+        }
+        
+        section p, section ul {
+            color: var(--on-surface-variant);
+            font-size: 0.95rem;
+        }
+        
+        section ul {
+            list-style: none;
+            margin-top: 8px;
+        }
+        
+        section ul li {
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        section ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        .commitment {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(103, 80, 164, 0.1), rgba(208, 188, 255, 0.15));
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .commitment h2 {
+            justify-content: center;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--on-surface-variant);
+            font-size: 0.85rem;
+        }
+        
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="icon">🔒</div>
+        <h1>Gizlilik Politikası</h1>
+        <p>Bu gizlilik politikası, "Notlar" uygulamasının kullanıcı verilerini nasıl topladığını, kullandığını ve koruduğunu açıklamaktadır. Uygulamayı kullanarak bu politikayı kabul etmiş olursunuz.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2><span>📊</span> Toplanan Veriler</h2>
+            <p>Uygulamamız aşağıdaki verileri toplar:</p>
+            <ul>
+                <li>E-posta adresi (hesap oluşturma ve kimlik doğrulama için)</li>
+                <li>Şifre (güvenli şekilde şifrelenerek saklanır)</li>
+                <li>Not içerikleri (başlık ve metin)</li>
+                <li>Not oluşturma ve düzenleme tarihleri</li>
+                <li>Cihaz bilgileri (uygulama performansı için)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span>🛡️</span> Veri Güvenliği</h2>
+            <p>Verilerinizin güvenliği bizim için önceliktir:</p>
+            <ul>
+                <li>Tüm notlarınız AES-256 algoritması ile şifrelenir</li>
+                <li>Şifreleme işlemleri sadece cihazınızda gerçekleşir</li>
+                <li>Firebase Authentication güvenli kimlik doğrulama sağlar</li>
+                <li>Bulut yedeklemesi tamamen şifreli olarak yapılır</li>
+                <li>Hassas veriler (şifre, token) güvenli şekilde korunur</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span>⚙️</span> Veri Kullanımı</h2>
+            <p>Topladığımız veriler yalnızca aşağıdaki amaçlarla kullanılır:</p>
+            <ul>
+                <li>Hesap oluşturma ve kimlik doğrulama</li>
+                <li>Notlarınızı güvenli şekilde saklama</li>
+                <li>Bulut senkronizasyonu sağlama</li>
+                <li>Uygulama performansını iyileştirme</li>
+                <li>Teknik destek sağlama</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span>🔗</span> Veri Paylaşımı</h2>
+            <p>Kişisel verilerinizi üçüncü taraflarla paylaşmayız:</p>
+            <ul>
+                <li>Notlarınız sadece size aittir</li>
+                <li>Her kullanıcının verileri izole edilmiştir</li>
+                <li>Diğer kullanıcılar verilerinize erişemez</li>
+                <li>Reklam veya pazarlama amacıyla veri satışı yapmayız</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span>💾</span> Veri Saklama</h2>
+            <p>Verileriniz aşağıdaki şekilde saklanır:</p>
+            <ul>
+                <li>Yerel depolama: Cihazınızda şifreli olarak</li>
+                <li>Bulut depolama: Firebase Firestore'da şifreli</li>
+                <li>Hesap silme durumunda tüm veriler kalıcı olarak silinir</li>
+                <li>Kullanıcı talebi üzerine veriler derhal silinebilir</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span>👤</span> Kullanıcı Hakları</h2>
+            <p>Verileriniz üzerinde tam kontrole sahipsiniz:</p>
+            <ul>
+                <li>Hesabınızı istediğiniz zaman silebilirsiniz</li>
+                <li>Tüm notlarınızı yerel veya buluttan silebilirsiniz</li>
+                <li>Şifrenizi değiştirebilirsiniz</li>
+                <li>Bulut senkronizasyonunu kontrol edebilirsiniz</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span>☁️</span> Firebase Entegrasyonu</h2>
+            <p>Uygulamamız Firebase hizmetlerini kullanır:</p>
+            <ul>
+                <li>Firebase Authentication: Güvenli giriş sistemi</li>
+                <li>Firebase Firestore: Şifreli bulut depolama</li>
+                <li>Google'ın gizlilik politikaları geçerlidir</li>
+                <li>Veriler Google'ın güvenli sunucularında saklanır</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span>🔄</span> Politika Güncellemeleri</h2>
+            <p>Bu gizlilik politikası gerektiğinde güncellenebilir. Önemli değişiklikler uygulama içinde bildirilecektir. Politikayı düzenli olarak kontrol etmenizi öneririz.</p>
+        </section>
+
+        <section>
+            <h2><span>📧</span> İletişim</h2>
+            <p>Gizlilik politikası hakkında sorularınız için:</p>
+            <ul>
+                <li>Geliştirici: Yusuf Yorunç</li>
+            </ul>
+        </section>
+
+        <section class="commitment">
+            <h2><span>✅</span> Güvenlik Taahhüdümüz</h2>
+            <p>Verilerinizin güvenliği ve gizliliği bizim için en önemli önceliktir. AES-256 şifreleme ile notlarınız maksimum güvenlik altındadır.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Son güncelleme: Aralık 2024</p>
+        <p>© 2024 Notlar - Yusuf Yorunç</p>
+    </footer>
+</body>
+</html>
