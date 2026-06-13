@@ -119,6 +119,26 @@
             left: 0;
             color: var(--primary);
         }
+
+        .highlight-box {
+            background: rgba(103, 80, 164, 0.08);
+            border: 1px solid rgba(103, 80, 164, 0.25);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-top: 12px;
+            font-size: 0.95rem;
+            color: var(--on-surface-variant);
+        }
+
+        .highlight-box strong {
+            color: var(--on-surface);
+        }
+
+        .highlight-box a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
         
         .commitment {
             text-align: center;
@@ -148,20 +168,22 @@
     <header>
         <div class="icon">🔒</div>
         <h1>Gizlilik Politikası</h1>
-        <p>Bu gizlilik politikası, "Notlar" uygulamasının kullanıcı verilerini nasıl topladığını, kullandığını ve koruduğunu açıklamaktadır. Uygulamayı kullanarak bu politikayı kabul etmiş olursunuz.</p>
+        <p>Bu gizlilik politikası, "Notlar" uygulamasının kullanıcı verilerini nasıl işlediğini ve koruduğunu açıklamaktadır. Uygulamayı kullanarak bu politikayı kabul etmiş olursunuz.</p>
     </header>
 
     <main>
         <section>
             <h2><span>📊</span> Toplanan Veriler</h2>
-            <p>Uygulamamız aşağıdaki verileri toplar:</p>
+            <p>Uygulamamız yalnızca uygulamanın işlevselliği için zorunlu olan verileri toplar ve bu verileri yalnızca cihazınızda ve kişisel hesabınıza bağlı şifreli bulut alanında saklar:</p>
             <ul>
                 <li>E-posta adresi (hesap oluşturma ve kimlik doğrulama için)</li>
-                <li>Şifre (güvenli şekilde şifrelenerek saklanır)</li>
-                <li>Not içerikleri (başlık ve metin)</li>
+                <li>Şifre (Firebase Authentication tarafından güvenli şekilde şifrelenerek saklanır, düz metin olarak tutulmaz)</li>
+                <li>Not içerikleri (başlık ve metin, yalnızca size ait şifreli alanda)</li>
                 <li>Not oluşturma ve düzenleme tarihleri</li>
-                <li>Cihaz bilgileri (uygulama performansı için)</li>
             </ul>
+            <div class="highlight-box">
+                <strong>Önemli:</strong> Toplanan veriler yalnızca uygulama işlevselliği için kullanılır. Herhangi bir üçüncü tarafla paylaşılmaz, reklam veya analitik amacıyla kullanılmaz.
+            </div>
         </section>
 
         <section>
@@ -169,10 +191,10 @@
             <p>Verilerinizin güvenliği bizim için önceliktir:</p>
             <ul>
                 <li>Tüm notlarınız AES-256 algoritması ile şifrelenir</li>
-                <li>Şifreleme işlemleri sadece cihazınızda gerçekleşir</li>
+                <li>Şifreleme anahtarları yalnızca cihazınızda üretilir ve saklanır</li>
                 <li>Firebase Authentication güvenli kimlik doğrulama sağlar</li>
                 <li>Bulut yedeklemesi tamamen şifreli olarak yapılır</li>
-                <li>Hassas veriler (şifre, token) güvenli şekilde korunur</li>
+                <li>Hassas veriler (şifre, token) güvenli depolama alanında korunur</li>
             </ul>
         </section>
 
@@ -182,20 +204,19 @@
             <ul>
                 <li>Hesap oluşturma ve kimlik doğrulama</li>
                 <li>Notlarınızı güvenli şekilde saklama</li>
-                <li>Bulut senkronizasyonu sağlama</li>
-                <li>Uygulama performansını iyileştirme</li>
+                <li>İsteğe bağlı bulut senkronizasyonu sağlama</li>
                 <li>Teknik destek sağlama</li>
             </ul>
         </section>
 
         <section>
             <h2><span>🔗</span> Veri Paylaşımı</h2>
-            <p>Kişisel verilerinizi üçüncü taraflarla paylaşmayız:</p>
+            <p>Kişisel verilerinizi kesinlikle üçüncü taraflarla paylaşmayız:</p>
             <ul>
-                <li>Notlarınız sadece size aittir</li>
-                <li>Her kullanıcının verileri izole edilmiştir</li>
-                <li>Diğer kullanıcılar verilerinize erişemez</li>
-                <li>Reklam veya pazarlama amacıyla veri satışı yapmayız</li>
+                <li>Notlarınız yalnızca size aittir ve başkaları tarafından erişilemez</li>
+                <li>Her kullanıcının verileri tamamen izole edilmiştir</li>
+                <li>Reklam veya pazarlama amacıyla herhangi bir veri satışı yapılmaz</li>
+                <li>İstatistiksel analiz veya profilleme amacıyla veri toplanmaz</li>
             </ul>
         </section>
 
@@ -203,32 +224,50 @@
             <h2><span>💾</span> Veri Saklama</h2>
             <p>Verileriniz aşağıdaki şekilde saklanır:</p>
             <ul>
-                <li>Yerel depolama: Cihazınızda şifreli olarak</li>
-                <li>Bulut depolama: Firebase Firestore'da şifreli</li>
-                <li>Hesap silme durumunda tüm veriler kalıcı olarak silinir</li>
-                <li>Kullanıcı talebi üzerine veriler derhal silinebilir</li>
+                <li>Yerel depolama: Cihazınızda AES-256 ile şifreli olarak</li>
+                <li>Bulut depolama: Firebase Firestore'da şifreli, yalnızca hesabınıza bağlı olarak</li>
+                <li>Hesap silme durumunda tüm veriler hem yerel depolamadan hem de buluttan kalıcı ve geri döndürülemez şekilde silinir</li>
+                <li>Kullanıcı talebi üzerine veriler derhal ve kalıcı olarak silinebilir</li>
             </ul>
+        </section>
+
+        <section>
+            <h2><span>🗑️</span> Veri Silme</h2>
+            <p>Kullanıcılar verilerini tamamen ve kalıcı olarak silebilir. Hesap silme işlemi gerçekleştiğinde:</p>
+            <ul>
+                <li>Tüm notlar yerel depolamadan kalıcı olarak silinir</li>
+                <li>Tüm bulut verileri Firebase Firestore ve Supabase'den kalıcı olarak silinir</li>
+                <li>Firebase Authentication hesabı tamamen kaldırılır</li>
+                <li>Bu işlem geri alınamaz; veriler kurtarılamaz</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Uygulama içi silme:</strong> Hesabınızı doğrudan uygulamadan silebilirsiniz.<br>
+                <strong>Ayarlar → Hesap → Hesabı Sil</strong> adımlarını izleyerek tüm verilerinizi anında ve kalıcı olarak kaldırabilirsiniz.
+                <br><br>
+                <strong>Destek talebi için:</strong> <a href="mailto:yusufyorunc@mail.com">yusufyorunc@mail.com</a> adresine e-posta göndererek veri silme talebinde bulunabilirsiniz.
+            </div>
         </section>
 
         <section>
             <h2><span>👤</span> Kullanıcı Hakları</h2>
             <p>Verileriniz üzerinde tam kontrole sahipsiniz:</p>
             <ul>
-                <li>Hesabınızı istediğiniz zaman silebilirsiniz</li>
-                <li>Tüm notlarınızı yerel veya buluttan silebilirsiniz</li>
+                <li>Hesabınızı ve tüm verilerinizi uygulama içinden istediğiniz zaman silebilirsiniz</li>
+                <li>Tüm notlarınızı yerel veya buluttan ayrı ayrı silebilirsiniz</li>
                 <li>Şifrenizi değiştirebilirsiniz</li>
-                <li>Bulut senkronizasyonunu kontrol edebilirsiniz</li>
+                <li>Bulut senkronizasyonunu istediğiniz zaman açıp kapatabilirsiniz</li>
+                <li>Hesabınızla ilgili tüm işlemler için bize e-posta gönderebilirsiniz</li>
             </ul>
         </section>
 
         <section>
             <h2><span>☁️</span> Firebase Entegrasyonu</h2>
-            <p>Uygulamamız Firebase hizmetlerini kullanır:</p>
+            <p>Uygulamamız Google Firebase hizmetlerini kullanır:</p>
             <ul>
-                <li>Firebase Authentication: Güvenli giriş sistemi</li>
-                <li>Firebase Firestore: Şifreli bulut depolama</li>
-                <li>Google'ın gizlilik politikaları geçerlidir</li>
-                <li>Veriler Google'ın güvenli sunucularında saklanır</li>
+                <li>Firebase Authentication: Güvenli giriş ve kimlik doğrulama sistemi</li>
+                <li>Firebase Firestore: Şifreli bulut depolama (yalnızca isteğe bağlı senkronizasyon için)</li>
+                <li>Veriler Google'ın güvenlik standartlarını karşılayan sunucularda saklanır</li>
+                <li>Google'ın gizlilik politikası bu servisler için de geçerlidir: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
             </ul>
         </section>
 
@@ -239,21 +278,24 @@
 
         <section>
             <h2><span>📧</span> İletişim</h2>
-            <p>Gizlilik politikası hakkında sorularınız için:</p>
+            <p>Gizlilik politikası veya veri işleme uygulamalarımız hakkında sorularınız için bizimle iletişime geçebilirsiniz:</p>
             <ul>
                 <li>Geliştirici: Yusuf Yorunç</li>
+                <li>E-posta: <a href="mailto:yusufyorunc@mail.com">yusufyorunc@mail.com</a></li>
+                <li>Yanıt süresi: En geç 30 gün içinde yanıtlanır</li>
             </ul>
         </section>
 
         <section class="commitment">
             <h2><span>✅</span> Güvenlik Taahhüdümüz</h2>
-            <p>Verilerinizin güvenliği ve gizliliği bizim için en önemli önceliktir. AES-256 şifreleme ile notlarınız maksimum güvenlik altındadır.</p>
+            <p>Verilerinizin güvenliği ve gizliliği bizim için en önemli önceliktir. AES-256 şifreleme ile notlarınız maksimum güvenlik altındadır. Verileriniz üzerindeki kontrolün tamamen sizde olduğuna inanıyoruz.</p>
         </section>
     </main>
 
     <footer>
-        <p>Son güncelleme: Aralık 2024</p>
-        <p>© 2024 Notlar - Yusuf Yorunç</p>
+        <p>Son güncelleme: Haziran 2026</p>
+        <p>© 2026 Notlar - Yusuf Yorunç</p>
+        <p><a href="mailto:yusufyorunc@mail.com">yusufyorunc@mail.com</a></p>
     </footer>
 </body>
 </html>
