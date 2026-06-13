@@ -1,188 +1,351 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gizlilik Politikası - Notlar Uygulaması</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
         :root {
-            --primary: #6750A4;
-            --surface: #FEF7FF;
-            --on-surface: #1D1B20;
-            --on-surface-variant: #49454F;
-            --outline: #79747E;
+            --primary: #6366f1;
+            --primary-light: rgba(99, 102, 241, 0.08);
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --bg-gradient: radial-gradient(circle at top, #faf9fe 0%, #f4f3f9 100%);
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(99, 102, 241, 0.08);
+            --text-primary: #1e1b4b;
+            --text-secondary: #4f46e5;
+            --text-muted: #64748b;
+            --shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.08);
+            --shadow-hover: 0 20px 40px -15px rgba(99, 102, 241, 0.15);
+            --badge-bg: rgba(99, 102, 241, 0.06);
+            --highlight-bg: rgba(99, 102, 241, 0.04);
+            --highlight-border: rgba(99, 102, 241, 0.15);
         }
-        
+
         @media (prefers-color-scheme: dark) {
             :root {
-                --primary: #D0BCFF;
-                --surface: #141218;
-                --on-surface: #E6E0E9;
-                --on-surface-variant: #CAC4D0;
-                --outline: #938F99;
+                --primary: #818cf8;
+                --primary-light: rgba(129, 140, 248, 0.12);
+                --primary-gradient: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+                --bg-gradient: radial-gradient(circle at top, #0d0b14 0%, #050407 100%);
+                --card-bg: rgba(18, 16, 26, 0.6);
+                --card-border: rgba(129, 140, 248, 0.12);
+                --text-primary: #f8fafc;
+                --text-secondary: #a5b4fc;
+                --text-muted: #94a3b8;
+                --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+                --shadow-hover: 0 20px 40px -15px rgba(129, 140, 248, 0.2);
+                --badge-bg: rgba(129, 140, 248, 0.08);
+                --highlight-bg: rgba(129, 140, 248, 0.04);
+                --highlight-border: rgba(129, 140, 248, 0.2);
             }
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background-color: var(--surface);
-            color: var(--on-surface);
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 800px;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 40px 20px;
+            max-width: 840px;
             margin: 0 auto;
+            min-height: 100vh;
         }
-        
+
+        ::selection {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
         header {
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, rgba(103, 80, 164, 0.1), rgba(208, 188, 255, 0.1));
-            border-radius: 20px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(121, 116, 126, 0.2);
+            padding: 50px 30px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            margin-bottom: 40px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
-        
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
         .icon {
-            width: 64px;
-            height: 64px;
-            background: rgba(103, 80, 164, 0.1);
-            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            background: var(--badge-bg);
+            border-radius: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 32px;
+            margin: 0 auto 24px;
+            font-size: 38px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+            transform: rotate(-5deg);
+            transition: transform 0.3s ease;
         }
-        
+
+        header:hover .icon {
+            transform: rotate(5deg) scale(1.05);
+        }
+
         h1 {
-            color: var(--on-surface);
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        
-        header p {
-            color: var(--on-surface-variant);
-            font-size: 0.95rem;
-        }
-        
-        section {
-            background: rgba(121, 116, 126, 0.05);
-            border: 1px solid rgba(121, 116, 126, 0.1);
-            border-radius: 16px;
-            padding: 20px;
+            color: var(--text-primary);
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
             margin-bottom: 16px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(99, 102, 241, 0.25);
+        }
+
         section h2 {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--on-surface);
-            margin-bottom: 12px;
+            gap: 16px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 18px;
+            letter-spacing: -0.02em;
         }
-        
+
         section h2 span {
-            background: rgba(103, 80, 164, 0.1);
-            padding: 8px;
-            border-radius: 10px;
-            font-size: 1.2rem;
+            background: var(--badge-bg);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--card-border);
         }
-        
-        section p, section ul {
-            color: var(--on-surface-variant);
-            font-size: 0.95rem;
+
+        section p,
+        section ul {
+            color: var(--text-muted);
+            font-size: 1rem;
         }
-        
+
         section ul {
             list-style: none;
-            margin-top: 8px;
+            margin-top: 12px;
         }
-        
+
         section ul li {
-            padding: 4px 0;
-            padding-left: 20px;
+            padding: 8px 0;
+            padding-left: 28px;
             position: relative;
+            color: var(--text-muted);
+            font-size: 0.98rem;
         }
-        
+
         section ul li::before {
-            content: "•";
+            content: "✦";
             position: absolute;
             left: 0;
+            top: 8px;
             color: var(--primary);
+            font-size: 0.9rem;
+            transition: transform 0.2s ease;
+        }
+
+        section ul li:hover::before {
+            transform: scale(1.2) rotate(15deg);
         }
 
         .highlight-box {
-            background: rgba(103, 80, 164, 0.08);
-            border: 1px solid rgba(103, 80, 164, 0.25);
-            border-radius: 12px;
-            padding: 14px 18px;
-            margin-top: 12px;
-            font-size: 0.95rem;
-            color: var(--on-surface-variant);
+            background: var(--highlight-bg);
+            border: 1px solid var(--highlight-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .highlight-box strong {
-            color: var(--on-surface);
+            color: var(--text-primary);
+            font-weight: 700;
         }
 
         .highlight-box a {
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
+            background: linear-gradient(120deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 0.2em;
+            background-position: 0 88%;
+            transition: background-size 0.25s ease-in, color 0.2s ease;
         }
-        
+
+        .highlight-box a:hover {
+            background-size: 100% 88%;
+            color: var(--text-secondary);
+        }
+
         .commitment {
             text-align: center;
-            background: linear-gradient(135deg, rgba(103, 80, 164, 0.1), rgba(208, 188, 255, 0.15));
-            padding: 30px;
-            margin-top: 30px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.04) 0%, rgba(168, 85, 247, 0.04) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            padding: 40px;
+            margin-top: 40px;
         }
-        
+
         .commitment h2 {
             justify-content: center;
         }
-        
+
         footer {
             text-align: center;
-            padding: 30px;
-            color: var(--on-surface-variant);
-            font-size: 0.85rem;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 40px;
         }
-        
+
+        footer p {
+            margin: 6px 0;
+        }
+
         footer a {
             color: var(--primary);
             text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: var(--text-secondary);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            header {
+                padding: 32px 20px;
+                margin-bottom: 24px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            section {
+                padding: 20px;
+                margin-bottom: 16px;
+                border-radius: 20px;
+            }
+
+            section h2 {
+                font-size: 1.15rem;
+                gap: 12px;
+            }
+
+            section h2 span {
+                padding: 8px;
+                font-size: 1.2rem;
+                border-radius: 10px;
+            }
+
+            .highlight-box {
+                padding: 16px;
+                border-radius: 12px;
+                margin-top: 16px;
+            }
+
+            .commitment {
+                padding: 24px 20px;
+                margin-top: 24px;
+                border-radius: 20px;
+            }
+
+            footer {
+                padding: 24px;
+                margin-top: 24px;
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="icon">🔒</div>
         <h1>Gizlilik Politikası</h1>
-        <p>Bu gizlilik politikası, "Notlar" uygulamasının kullanıcı verilerini nasıl işlediğini ve koruduğunu açıklamaktadır. Uygulamayı kullanarak bu politikayı kabul etmiş olursunuz.</p>
+        <p>Bu gizlilik politikası, "Notlar" uygulamasının kullanıcı verilerini nasıl işlediğini ve koruduğunu
+            açıklamaktadır. Uygulamayı kullanarak bu politikayı kabul etmiş olursunuz.</p>
     </header>
 
     <main>
         <section>
             <h2><span>📊</span> Toplanan Veriler</h2>
-            <p>Uygulamamız yalnızca uygulamanın işlevselliği için zorunlu olan verileri toplar ve bu verileri yalnızca cihazınızda ve kişisel hesabınıza bağlı şifreli bulut alanında saklar:</p>
+            <p>Uygulamamız yalnızca uygulamanın işlevselliği için zorunlu olan verileri toplar ve bu verileri yalnızca
+                cihazınızda ve kişisel hesabınıza bağlı şifreli bulut alanında saklar:</p>
             <ul>
                 <li>E-posta adresi (hesap oluşturma ve kimlik doğrulama için)</li>
-                <li>Şifre (Firebase Authentication tarafından güvenli şekilde şifrelenerek saklanır, düz metin olarak tutulmaz)</li>
+                <li>Şifre (Firebase Authentication tarafından güvenli şekilde şifrelenerek saklanır, düz metin olarak
+                    tutulmaz)</li>
                 <li>Not içerikleri (başlık ve metin, yalnızca size ait şifreli alanda)</li>
                 <li>Not oluşturma ve düzenleme tarihleri</li>
             </ul>
             <div class="highlight-box">
-                <strong>Önemli:</strong> Toplanan veriler yalnızca uygulama işlevselliği için kullanılır. Herhangi bir üçüncü tarafla paylaşılmaz, reklam veya analitik amacıyla kullanılmaz.
+                <strong>Önemli:</strong> Toplanan veriler yalnızca uygulama işlevselliği için kullanılır. Herhangi bir
+                üçüncü tarafla paylaşılmaz, reklam veya analitik amacıyla kullanılmaz.
             </div>
         </section>
 
@@ -226,7 +389,8 @@
             <ul>
                 <li>Yerel depolama: Cihazınızda AES-256 ile şifreli olarak</li>
                 <li>Bulut depolama: Firebase Firestore'da şifreli, yalnızca hesabınıza bağlı olarak</li>
-                <li>Hesap silme durumunda tüm veriler hem yerel depolamadan hem de buluttan kalıcı ve geri döndürülemez şekilde silinir</li>
+                <li>Hesap silme durumunda tüm veriler hem yerel depolamadan hem de buluttan kalıcı ve geri döndürülemez
+                    şekilde silinir</li>
                 <li>Kullanıcı talebi üzerine veriler derhal ve kalıcı olarak silinebilir</li>
             </ul>
         </section>
@@ -242,9 +406,11 @@
             </ul>
             <div class="highlight-box">
                 <strong>Uygulama içi silme:</strong> Hesabınızı doğrudan uygulamadan silebilirsiniz.<br>
-                <strong>Ayarlar → Hesap → Hesabı Sil</strong> adımlarını izleyerek tüm verilerinizi anında ve kalıcı olarak kaldırabilirsiniz.
+                <strong>Ayarlar → Hesap → Hesabı Sil</strong> adımlarını izleyerek tüm verilerinizi anında ve kalıcı
+                olarak kaldırabilirsiniz.
                 <br><br>
-                <strong>Destek talebi için:</strong> <a href="mailto:yusufyorunc@mail.com">yusufyorunc@mail.com</a> adresine e-posta göndererek veri silme talebinde bulunabilirsiniz.
+                <strong>Destek talebi için:</strong> <a href="mailto:yusufyorunc@mail.com">yusufyorunc@mail.com</a>
+                adresine e-posta göndererek veri silme talebinde bulunabilirsiniz.
             </div>
         </section>
 
@@ -267,18 +433,21 @@
                 <li>Firebase Authentication: Güvenli giriş ve kimlik doğrulama sistemi</li>
                 <li>Firebase Firestore: Şifreli bulut depolama (yalnızca isteğe bağlı senkronizasyon için)</li>
                 <li>Veriler Google'ın güvenlik standartlarını karşılayan sunucularda saklanır</li>
-                <li>Google'ın gizlilik politikası bu servisler için de geçerlidir: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+                <li>Google'ın gizlilik politikası bu servisler için de geçerlidir: <a
+                        href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
             </ul>
         </section>
 
         <section>
             <h2><span>🔄</span> Politika Güncellemeleri</h2>
-            <p>Bu gizlilik politikası gerektiğinde güncellenebilir. Önemli değişiklikler uygulama içinde bildirilecektir. Politikayı düzenli olarak kontrol etmenizi öneririz.</p>
+            <p>Bu gizlilik politikası gerektiğinde güncellenebilir. Önemli değişiklikler uygulama içinde
+                bildirilecektir. Politikayı düzenli olarak kontrol etmenizi öneririz.</p>
         </section>
 
         <section>
             <h2><span>📧</span> İletişim</h2>
-            <p>Gizlilik politikası veya veri işleme uygulamalarımız hakkında sorularınız için bizimle iletişime geçebilirsiniz:</p>
+            <p>Gizlilik politikası veya veri işleme uygulamalarımız hakkında sorularınız için bizimle iletişime
+                geçebilirsiniz:</p>
             <ul>
                 <li>Geliştirici: Yusuf Yorunç</li>
                 <li>E-posta: <a href="mailto:yusufyorunc@mail.com">yusufyorunc@mail.com</a></li>
@@ -288,14 +457,17 @@
 
         <section class="commitment">
             <h2><span>✅</span> Güvenlik Taahhüdümüz</h2>
-            <p>Verilerinizin güvenliği ve gizliliği bizim için en önemli önceliktir. AES-256 şifreleme ile notlarınız maksimum güvenlik altındadır. Verileriniz üzerindeki kontrolün tamamen sizde olduğuna inanıyoruz.</p>
+            <p>Verilerinizin güvenliği ve gizliliği bizim için en önemli önceliktir. AES-256 şifreleme ile notlarınız
+                maksimum güvenlik altındadır. Verileriniz üzerindeki kontrolün tamamen sizde olduğuna inanıyoruz.</p>
         </section>
     </main>
 
     <footer>
         <p>Son güncelleme: Haziran 2026</p>
-        <p>© 2026 Notlar - Yusuf Yorunç</p>
-        <p><a href="mailto:yusufyorunc@mail.com">yusufyorunc@mail.com</a></p>
+        <p>© 2026 Notlar — Yusuf Yorunç</p>
+        <p><a href="mailto:yusufyorunc@mail.com">yusufyorunc@mail.com</a> &nbsp;|&nbsp; <a
+                href="delete-account.html">Hesap Silme</a></p>
     </footer>
 </body>
+
 </html>
