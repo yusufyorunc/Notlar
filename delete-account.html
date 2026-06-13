@@ -322,7 +322,7 @@
             border-bottom: none;
         }
 
-        .data-table .deleted {
+        .deleted-badge {
             color: var(--danger-primary);
             font-weight: 700;
             background: var(--danger-bg);
@@ -378,6 +378,103 @@
             color: var(--text-secondary);
             text-decoration: underline;
         }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            header {
+                padding: 32px 20px;
+                margin-bottom: 24px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            section {
+                padding: 20px;
+                margin-bottom: 16px;
+                border-radius: 20px;
+            }
+
+            section h2 {
+                font-size: 1.15rem;
+                gap: 12px;
+            }
+
+            section h2 .badge {
+                padding: 8px;
+                font-size: 1.2rem;
+                border-radius: 10px;
+            }
+
+            .warning-box,
+            .info-box {
+                padding: 16px;
+                border-radius: 12px;
+                margin-top: 16px;
+            }
+
+            .email-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 12px 24px;
+            }
+
+            /* Mobil Uyumlu Tablo Kart Tasarımı */
+            .data-table {
+                display: block;
+                border: none;
+                box-shadow: none;
+                background: transparent;
+                margin-top: 16px;
+            }
+
+            .data-table thead {
+                display: none;
+            }
+
+            .data-table tbody,
+            .data-table tr {
+                display: block;
+                width: 100%;
+            }
+
+            .data-table tr {
+                background: var(--card-bg);
+                border: 1px solid var(--card-border);
+                border-radius: 16px;
+                padding: 12px 16px;
+                margin-bottom: 12px;
+                box-shadow: var(--shadow);
+            }
+
+            .data-table td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0;
+                border-bottom: 1px dashed var(--card-border);
+                background: transparent;
+                text-align: right;
+                font-size: 0.9rem;
+            }
+
+            .data-table td:last-child {
+                border-bottom: none;
+            }
+
+            .data-table td::before {
+                content: attr(data-label);
+                font-weight: 700;
+                color: var(--text-primary);
+                text-align: left;
+                margin-right: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -429,36 +526,40 @@
             <h2><span class="badge">🗂️</span> Silinen Veriler</h2>
             <p>Hesap silme işlemi tamamlandığında aşağıdaki tüm veriler kalıcı olarak kaldırılır:</p>
             <table class="data-table">
-                <tr>
-                    <th>Veri Türü</th>
-                    <th>Depolama Yeri</th>
-                    <th>Durum</th>
-                </tr>
-                <tr>
-                    <td>E-posta adresi ve kimlik bilgileri</td>
-                    <td>Firebase Authentication</td>
-                    <td class="deleted">Anında silinir</td>
-                </tr>
-                <tr>
-                    <td>Tüm not içerikleri (başlık ve metin)</td>
-                    <td>Firebase Firestore (bulut)</td>
-                    <td class="deleted">Anında silinir</td>
-                </tr>
-                <tr>
-                    <td>Tüm not içerikleri (başlık ve metin)</td>
-                    <td>Cihaz yerel depolama</td>
-                    <td class="deleted">Anında silinir</td>
-                </tr>
-                <tr>
-                    <td>Görsel Veriler</td>
-                    <td>Supabase (bulut)/ Yerel</td>
-                    <td class="deleted">Anında silinir</td>
-                </tr>
-                <tr>
-                    <td>Şifreleme anahtarları</td>
-                    <td>Cihaz güvenli depolama</td>
-                    <td class="deleted">Anında silinir</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Veri Türü</th>
+                        <th>Depolama Yeri</th>
+                        <th>Durum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Veri Türü">E-posta adresi ve kimlik bilgileri</td>
+                        <td data-label="Depolama Yeri">Firebase Authentication</td>
+                        <td data-label="Durum"><span class="deleted-badge">Anında silinir</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Veri Türü">Tüm not içerikleri (başlık ve metin)</td>
+                        <td data-label="Depolama Yeri">Firebase Firestore (bulut)</td>
+                        <td data-label="Durum"><span class="deleted-badge">Anında silinir</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Veri Türü">Tüm not içerikleri (başlık ve metin)</td>
+                        <td data-label="Depolama Yeri">Cihaz yerel depolama</td>
+                        <td data-label="Durum"><span class="deleted-badge">Anında silinir</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Veri Türü">Görsel Veriler</td>
+                        <td data-label="Depolama Yeri">Supabase (bulut)/ Yerel</td>
+                        <td data-label="Durum"><span class="deleted-badge">Anında silinir</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Veri Türü">Şifreleme anahtarları</td>
+                        <td data-label="Depolama Yeri">Cihaz güvenli depolama</td>
+                        <td data-label="Durum"><span class="deleted-badge">Anında silinir</span></td>
+                    </tr>
+                </tbody>
             </table>
             <div class="info-box" style="margin-top:14px">
                 <strong>Ek saklama süresi: Yok.</strong><br>
