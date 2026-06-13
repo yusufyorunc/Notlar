@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesap Silme - Notlar Uygulaması</title>
+    <style>
+        :root {
+            --primary: #6750A4;
+            --primary-light: rgba(103, 80, 164, 0.12);
+            --danger: #B3261E;
+            --danger-light: rgba(179, 38, 30, 0.08);
+            --surface: #FEF7FF;
+            --on-surface: #1D1B20;
+            --on-surface-variant: #49454F;
+            --outline: #79747E;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #D0BCFF;
+                --primary-light: rgba(208, 188, 255, 0.12);
+                --danger: #F2B8B5;
+                --danger-light: rgba(242, 184, 181, 0.08);
+                --surface: #141218;
+                --on-surface: #E6E0E9;
+                --on-surface-variant: #CAC4D0;
+                --outline: #938F99;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--surface);
+            color: var(--on-surface);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--danger-light), rgba(103, 80, 164, 0.06));
+            border-radius: 20px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(179, 38, 30, 0.15);
+        }
+
+        .icon {
+            width: 72px;
+            height: 72px;
+            background: var(--danger-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 36px;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--on-surface-variant);
+            font-size: 0.95rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        section {
+            background: rgba(121, 116, 126, 0.05);
+            border: 1px solid rgba(121, 116, 126, 0.12);
+            border-radius: 16px;
+            padding: 22px 24px;
+            margin-bottom: 16px;
+        }
+
+        section h2 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        section h2 .badge {
+            background: var(--primary-light);
+            padding: 8px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+        }
+
+        p,
+        ul,
+        ol {
+            color: var(--on-surface-variant);
+            font-size: 0.95rem;
+        }
+
+        ol {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+
+        ol li {
+            padding: 6px 0;
+            padding-left: 6px;
+        }
+
+        ol li strong {
+            color: var(--on-surface);
+        }
+
+        .step-arrow {
+            color: var(--primary);
+            font-weight: 700;
+            margin: 0 4px;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        ul li {
+            padding: 5px 0 5px 20px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--danger);
+        }
+
+        ul li strong {
+            color: var(--on-surface);
+        }
+
+        .warning-box {
+            background: var(--danger-light);
+            border: 1px solid rgba(179, 38, 30, 0.2);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-top: 14px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 0.9rem;
+            color: var(--on-surface-variant);
+        }
+
+        .warning-box .w-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .info-box {
+            background: var(--primary-light);
+            border: 1px solid rgba(103, 80, 164, 0.2);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-top: 14px;
+            font-size: 0.92rem;
+            color: var(--on-surface-variant);
+        }
+
+        .info-box strong {
+            color: var(--on-surface);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            font-size: 0.9rem;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 10px 14px;
+            background: var(--primary-light);
+            color: var(--on-surface);
+            font-weight: 600;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .data-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(121, 116, 126, 0.1);
+            color: var(--on-surface-variant);
+            vertical-align: top;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table .deleted {
+            color: #B3261E;
+            font-weight: 600;
+        }
+
+        .email-btn {
+            display: inline-block;
+            margin-top: 14px;
+            background: var(--primary);
+            color: #fff;
+            padding: 12px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+
+        .email-btn:hover {
+            opacity: 0.85;
+        }
+
+        footer {
+            text-align: center;
+            padding: 28px;
+            color: var(--on-surface-variant);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="icon">🗑️</div>
+        <h1>Hesap Silme</h1>
+        <p><strong>Notlar</strong> uygulaması — Hesabınızı ve tüm ilişkili verilerinizi kalıcı olarak silmek için bu
+            sayfadaki adımları izleyin.</p>
+    </header>
+
+    <main>
+
+        <section>
+            <h2><span class="badge">📱</span> Uygulama İçinden Hesap Silme (Önerilen)</h2>
+            <p>En hızlı yöntem: Hesabınızı doğrudan <strong>Notlar</strong> uygulaması üzerinden silebilirsiniz.</p>
+            <ol>
+                <li><strong>Notlar</strong> uygulamasını açın</li>
+                <li>Sağ üst köşedeki profil / menü ikonuna dokunun</li>
+                <li><strong>Ayarlar</strong>'a gidin</li>
+                <li><strong>Hesap</strong> bölümüne dokunun</li>
+                <li><strong>Hesabı Sil</strong> seçeneğine dokunun</li>
+                <li>Güvenlik doğrulaması için mevcut şifrenizi girin</li>
+                <li><strong>Sil</strong> butonuna basarak işlemi onaylayın</li>
+            </ol>
+            <div class="warning-box">
+                <span class="w-icon">⚠️</span>
+                <span>Bu işlem geri alınamaz. Hesabınız ve tüm verileriniz kalıcı olarak silinir; kurtarma mümkün
+                    değildir.</span>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="badge">📧</span> E-posta ile Silme Talebi</h2>
+            <p>Uygulamaya erişiminiz yoksa e-posta göndererek de silme talebinde bulunabilirsiniz.</p>
+            <div class="info-box">
+                <strong>E-posta adresi:</strong> <a href="mailto:yusufyorunc@mail.com">yusufyorunc@mail.com</a><br><br>
+                <strong>E-postanıza şunları ekleyin:</strong><br>
+                • Hesabınızda kayıtlı e-posta adresi<br>
+                • "Hesap Silme Talebi" ifadesi<br><br>
+                <strong>Yanıt süresi:</strong> En geç 30 gün içinde yanıtlanır ve işlem tamamlanır.
+            </div>
+            <a href="mailto:yusufyorunc@mail.com?subject=Hesap%20Silme%20Talebi&body=Merhaba%2C%0A%0ANotlar%20uygulamas%C4%B1ndaki%20hesab%C4%B1m%C4%B1n%20silinmesini%20talep%20ediyorum.%0A%0AHesap%20e-postas%C4%B1%3A%20"
+                class="email-btn">✉️ E-posta Gönder</a>
+        </section>
+
+        <section>
+            <h2><span class="badge">🗂️</span> Silinen Veriler</h2>
+            <p>Hesap silme işlemi tamamlandığında aşağıdaki tüm veriler kalıcı olarak kaldırılır:</p>
+            <table class="data-table">
+                <tr>
+                    <th>Veri Türü</th>
+                    <th>Depolama Yeri</th>
+                    <th>Durum</th>
+                </tr>
+                <tr>
+                    <td>E-posta adresi ve kimlik bilgileri</td>
+                    <td>Firebase Authentication</td>
+                    <td class="deleted">Anında silinir</td>
+                </tr>
+                <tr>
+                    <td>Tüm not içerikleri (başlık ve metin)</td>
+                    <td>Firebase Firestore (bulut)</td>
+                    <td class="deleted">Anında silinir</td>
+                </tr>
+                <tr>
+                    <td>Tüm not içerikleri (başlık ve metin)</td>
+                    <td>Cihaz yerel depolama</td>
+                    <td class="deleted">Anında silinir</td>
+                </tr>
+                <tr>
+                    <td>Görsel Veriler</td>
+                    <td>Supabase (bulut)/ Yerel</td>
+                    <td class="deleted">Anında silinir</td>
+                </tr>
+                <tr>
+                    <td>Şifreleme anahtarları</td>
+                    <td>Cihaz güvenli depolama</td>
+                    <td class="deleted">Anında silinir</td>
+                </tr>
+            </table>
+            <div class="info-box" style="margin-top:14px">
+                <strong>Ek saklama süresi: Yok.</strong><br>
+                Hiçbir veri yedek olarak veya başka bir amaçla saklanmaz. Silme işlemi anlık ve geri döndürülemezdir.
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="badge">❓</span> Sık Sorulan Sorular</h2>
+            <ul>
+                <li><strong>Hesabımı sildikten sonra geri alabilir miyim?</strong> — Hayır. Silme işlemi kalıcıdır ve
+                    geri alınamaz.</li>
+                <li><strong>Silme işlemi ne kadar sürer?</strong> — Uygulama içi silme anlıktır. E-posta talebi en geç
+                    30 gün içinde işleme alınır.</li>
+                <li><strong>Notlarımı silmeden sadece hesabımı silebilir miyim?</strong> — Hayır. Hesap silindiğinde tüm
+                    notlar da kalıcı olarak silinir.</li>
+                <li><strong>Silmeden önce notlarımı yedekleyebilir miyim?</strong> — Evet. Silme işleminden önce
+                    notlarınızı kopyalayıp başka bir yere kaydedebilirsiniz.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Notlar — Yusuf Yorunç</p>
+        <p><a href="mailto:yusufyorunc@mail.com">yusufyorunc@mail.com</a> &nbsp;|&nbsp; <a
+                href="privacy-policy.html">Gizlilik Politikası</a></p>
+    </footer>
+
+</body>
+
+</html>
